@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.aeonbits.owner.ConfigFactory;
+import org.apache.commons.io.FileUtils;
 import org.api4.java.ai.ml.core.dataset.splitter.SplitFailedException;
 import org.api4.java.ai.ml.core.evaluation.IPrediction;
 import org.api4.java.ai.ml.core.evaluation.IPredictionBatch;
@@ -120,7 +121,11 @@ public abstract class AbstractRunner {
 				List<IRegressionPrediction> predictions = predictionBatch.getPredictions().stream()
 						.map(prediction -> new SingleTargetRegressionPrediction(Math.max(0, ((IRegressionPrediction) prediction).getDoublePrediction()))).collect(Collectors.toList());
 
-				for (ERulPerformanceMeasure performanceMeasure : ERulPerformanceMeasure.values()) {
+                List<Double> predictedValues = predictions.stream().map(x -> x.getPrediction()).collect(Collectors.toList());
+                File resultFile = new File(String.format("tmp/%s.csv", experimentConfiguration.getExperimentId()));
+                FileUtils.writeLines(resultFile, predictedValues);
+
+                for (ERulPerformanceMeasure performanceMeasure : ERulPerformanceMeasure.values()) {
 					double performance = performanceMeasure.loss(expected, predictions);
 					experimentDBColumns.put("performance_" + performanceMeasure.name().toLowerCase(), performance);
 					LOGGER.info("performance_{}: {}", performanceMeasure.name().toLowerCase(), performance);
