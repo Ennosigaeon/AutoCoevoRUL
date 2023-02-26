@@ -77,7 +77,7 @@ def parse_raw(arff_, is_path=True, dense_mode=True):
     """
     if is_path:
         arff_data = open(arff_, 'r')
-        arff_data = arff_data.read().replace("timeseries", "string") #TODO ROBUSTNESS
+        arff_data = arff_data.read().replace("timeseries", "string").replace("TIMESERIES", "string") #TODO ROBUSTNESS
     else:
         arff_data = arff_  # here path is actually the content of an arff file.
     try:
@@ -90,7 +90,7 @@ def parse_raw(arff_, is_path=True, dense_mode=True):
             arff_parsed = arff.load(arff_data, return_type=mode, encode_nominal=True)
         except:  # exception is thrown when sparse data is loaded in DENSE mode.
             if dense_mode:
-                arff_parsed = parse_raw(arff_, as_rul, is_path, False)  # arff may be in sparse format.
+                arff_parsed = parse_raw(arff_, is_path, False)  # arff may be in sparse format.
 
         return arff_parsed
     except Exception as e:

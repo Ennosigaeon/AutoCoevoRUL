@@ -1,0 +1,44 @@
+cpu.max = 10
+mem.max = 16008
+
+dataPath = ../data/autorul/
+numberOfFolds = 1
+totalTimeout = 60:MINUTES
+
+rulSearchspace = searchspace/rul.json
+rulRulRootComponentName = sklearn.pipeline.make_pipeline
+
+featureSearchspace = searchspace/timeseries/index.json
+featureRequiredInterface = TimeSeriesFeatureGenerator
+featureMainComponentNames = python_connection.feature_generation.tsfresh_feature_generator.FCParametersDictionary, pyts.transformation.ROCKET, python_connection.feature_generation.ultra_fast_shapelets_feature_generator.UltraFastShapeletsFeatureExtractor
+featureMainComponentNamesWithoutActivationBit = python_connection.feature_generation.tsfresh_feature_generator.FCParametersDictionary
+featurePythonTemplatePath = ../python_connection/run.py
+featureCandidateTimeout = 21:MINUTES
+featurePopulationSize = 7
+
+regressionSearchpace = searchspace/regression/index.json
+regressionRequiredInterface = AbstractRegressor
+regressionCandidateTimeout = 5:MINUTES
+
+ggp.population_size=35
+ggp.elitism_size=1
+ggp.tournament_size=2
+ggp.generations=50
+ggp.max_depth=50
+ggp.xover.rate=0.9
+ggp.mutation.rate=0.1
+ggp.log.fitness_stats=true
+ggp.early_stopping=15
+ggp.random_restart=10
+ggp.failed_eval_score=10000
+
+keyfields = datasetName, internal_performance_measure, featureObjectiveMeasure, seed:int(3)
+resultfields = final_pipeline:LONGTEXT, internal_performance, performance_asymmetric_loss, performance_asymmetric_loss2, performance_mean_asymmetric_loss2, performance_mean_percentage_error, performance_mean_absolute_percentage_error, performance_mean_squared_percentage_error, performance_mean_absolute_error, performance_root_mean_squared_error, performance_mean_squared_error, performance_weighted_absolute_error, performance_weighted_asymmetric_absolute_error, performance_linear_mean_squared_error, performance_mean_squared_logarithmic_mean_squared_error, performance_quadratic_quadratic_error
+
+ignore.time = datasetName, internal_performance_measure, featureObjectiveMeasure, seed, final_pipeline, internal_performance, performance_asymmetric_loss, performance_asymmetric_loss2, performance_mean_asymmetric_loss2, performance_mean_percentage_error, performance_mean_absolute_percentage_error, performance_mean_squared_percentage_error, performance_mean_absolute_error, performance_root_mean_squared_error, performance_mean_squared_error, performance_weighted_absolute_error, performance_weighted_asymmetric_absolute_error, performance_linear_mean_squared_error, performance_mean_squared_logarithmic_mean_squared_error, performance_quadratic_quadratic_error
+ignore.memory = datasetName, internal_performance_measure, featureObjectiveMeasure, seed, final_pipeline, internal_performance, performance_asymmetric_loss, performance_asymmetric_loss2, performance_mean_asymmetric_loss2, performance_mean_percentage_error, performance_mean_absolute_percentage_error, performance_mean_squared_percentage_error, performance_mean_absolute_error, performance_root_mean_squared_error, performance_mean_squared_error, performance_weighted_absolute_error, performance_weighted_asymmetric_absolute_error, performance_linear_mean_squared_error, performance_mean_squared_logarithmic_mean_squared_error, performance_quadratic_quadratic_error
+
+datasetName = cmapss1<SEED>_train.arff
+internal_performance_measure = ROOT_MEAN_SQUARED_ERROR
+featureObjectiveMeasure = MINIMUM
+seed = <SEED>

@@ -26,7 +26,8 @@ From: ubuntu:18.04
    pip3 install liac-arff==2.5.0
    pip3 install scikit-learn==0.24.1
    pip3 install tsfresh==0.17.0
+   pip3 install statsmodels==0.12.1
    pip3 install pyts==0.11.0
-   pip3 install python_connection/
+   pip3 install python_connection/python_connection
 
    echo "Successfully installed all features"

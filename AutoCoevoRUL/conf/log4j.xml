@@ -87,7 +87,7 @@
 	</appender>
 
 	<logger name="mlplan">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 		<appender-ref ref="infoFileAppender" />
 		<appender-ref ref="warnFileAppender" />
@@ -107,7 +107,7 @@
 
 	<logger
 		name="pipeline_performance_estimation.SearchConfiguration">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 		<appender-ref ref="infoFileAppender" />
 		<appender-ref ref="warnFileAppender" />
@@ -117,7 +117,7 @@
 	
 	<logger
 		name="pipeline_performance_estimation.CoevolutionRunner">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 		<appender-ref ref="infoFileAppender" />
 		<appender-ref ref="warnFileAppender" />
@@ -127,7 +127,7 @@
 	
 	<logger
 		name="pipeline_performance_estimation.randomsearch.RandomSearchRunner">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 		<appender-ref ref="infoFileAppender" />
 		<appender-ref ref="warnFileAppender" />
@@ -137,7 +137,7 @@
 	
 	<logger
 		name="pipeline_performance_estimation.mlplan.MLPlanRunner">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 		<appender-ref ref="infoFileAppender" />
 		<appender-ref ref="warnFileAppender" />
@@ -147,7 +147,7 @@
 
 
 	<logger name="ai.libs">
-		<level value="warn" />
+		<level value="debug" />
 		<appender-ref ref="console" />
 		<appender-ref ref="infoFileAppender" />
 		<appender-ref ref="warnFileAppender" />
@@ -168,7 +168,7 @@
 
 	<logger
 		name="ai.libs.jaicore.ml.scikitwrapper.ScikitLearnWrapper">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<logger
@@ -178,7 +178,7 @@
 
 	<logger
 		name="ai.libs.jaicore.ml.core.evaluation.evaluator.SupervisedLearnerExecutor">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 
 	<logger name="ai.libs.jaicore.experiments.ExperimentRunner">
